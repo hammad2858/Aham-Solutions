@@ -1,30 +1,3 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Aham Solutions — Digital Product Studio</title> <meta name="description" content="We build high-performance, scalable digital products. WhatsApp AI autom
-
-pasted
-
-In form the budget must be user entered.
-
-3:57 PM
-
-Reconsidered form input method for budget customization
-Reconsidered form input method for budget customization
-Done — budget is now a free-text input with the placeholder e.g. $800 or $2,000+. Whatever the client types goes straight into the webhook payload as-is.
-
-One heads up for your AI scoring prompt: since budget is now free-form text instead of a fixed dropdown value, the model will need to interpret it (e.g. "around 1k", "1000 dollars", "Rs. 50,000") rather than match against exact strings. Worth adding a line to your system prompt like — "The budget field is free-text entered by the client. Convert it to a USD equivalent if needed and score it against the nearest bracket." — so the scoring stays consistent.
-
-
-Index
-Code · HTML 
-
-
-
-
-
-
-Claude is AI and can make mistakes. Please double-check responses.
-
-
-Index · HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +11,7 @@ Index · HTML
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
   :root {
     --bg:       #0B0E1A;
     --bg2:      #111520;
@@ -53,9 +26,90 @@ Index · HTML
     --sans:     'Inter', sans-serif;
     --danger:   #FF6B6B;
   }
- 
+
+
+  /* ── ANIMATED BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 10%, rgba(108,99,255,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 50% at 85% 80%, rgba(79,255,176,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 40% at 70% 20%, rgba(108,99,255,0.10) 0%, transparent 50%);
+    animation: bgShift 14s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes bgShift {
+    0%   { opacity: 1; transform: scale(1)   translateX(0px)   translateY(0px); }
+    33%  { opacity: 0.85; transform: scale(1.04) translateX(18px)  translateY(-12px); }
+    66%  { opacity: 0.9;  transform: scale(0.97) translateX(-14px) translateY(16px); }
+    100% { opacity: 1; transform: scale(1.02) translateX(10px)  translateY(-8px); }
+  }
+
+  /* Floating orb 1 */
+  body::after {
+    content: '';
+    position: fixed;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,99,255,0.13) 0%, transparent 70%);
+    top: -80px; right: -100px; z-index: 0;
+    animation: orb1 18s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes orb1 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(-60px, 80px) scale(1.15); }
+    100% { transform: translate(30px, 40px) scale(0.9); }
+  }
+
+  .orb2 {
+    position: fixed;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,255,176,0.09) 0%, transparent 70%);
+    bottom: 10%; left: -80px; z-index: 0;
+    animation: orb2 22s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes orb2 {
+    0%   { transform: translate(0, 0) scale(1); }
+    50%  { transform: translate(50px, -60px) scale(1.1); }
+    100% { transform: translate(-20px, 30px) scale(0.95); }
+  }
+
+  .orb3 {
+    position: fixed;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(108,99,255,0.11) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    z-index: 0;
+    animation: orb3 26s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  @keyframes orb3 {
+    0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    50%  { transform: translate(-40%, -60%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-60%, -45%) scale(0.85); opacity: 0.7; }
+  }
+
+  /* Grid overlay */
+  .bg-grid {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    background-image:
+      linear-gradient(rgba(108,99,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(108,99,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+  }
+
+  /* Ensure all sections sit above bg layers */
+  nav, section, footer { position: relative; z-index: 1; }
+
   html { scroll-behavior: smooth; }
- 
+
   body {
     background: var(--bg);
     color: var(--text);
@@ -65,14 +119,14 @@ Index · HTML
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
- 
+
   a { color: inherit; text-decoration: none; }
- 
+
   /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
- 
+
   /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -94,7 +148,7 @@ Index · HTML
     transition: opacity 0.2s;
   }
   .btn-nav:hover { opacity: 0.88; }
- 
+
   /* ── HERO ── */
   .hero {
     padding: 148px 60px 80px;
@@ -122,7 +176,7 @@ Index · HTML
     animation: blink 1s step-end infinite;
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
- 
+
   .hero-sub {
     margin-top: 28px; font-size: 16px; color: var(--muted);
     line-height: 1.75; max-width: 560px;
@@ -143,7 +197,7 @@ Index · HTML
     transition: color 0.2s, border-color 0.2s;
   }
   .btn-ghost:hover { color: var(--text); border-color: var(--border-h); }
- 
+
   .hero-stats {
     display: flex; gap: 52px; flex-wrap: wrap;
     margin-top: 60px; padding-top: 36px;
@@ -151,7 +205,7 @@ Index · HTML
   }
   .stat-num { font-size: 28px; font-weight: 600; color: var(--text); }
   .stat-label { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 3px; letter-spacing: 0.04em; }
- 
+
   /* ── SERVICES ── */
   .services {
     max-width: 1100px; margin: 0 auto;
@@ -168,7 +222,7 @@ Index · HTML
   .service-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
   .service-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
   .service-tag { margin-top: 18px; font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.08em; }
- 
+
   /* ── STACK SECTION ── */
   .stack-section {
     max-width: 1100px; margin: 0 auto;
@@ -179,7 +233,7 @@ Index · HTML
     letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px;
   }
   .section-label span { color: var(--accent); margin-right: 6px; }
- 
+
   .cat-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
   .cat-tab {
     font-family: var(--mono); font-size: 12px;
@@ -190,7 +244,7 @@ Index · HTML
   }
   .cat-tab:hover { color: var(--text); border-color: var(--border-h); }
   .cat-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
- 
+
   .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -206,7 +260,7 @@ Index · HTML
   .tech-pill-icon { font-size: 20px; color: var(--accent); }
   .tech-pill-name { font-size: 13px; font-weight: 500; color: var(--text); }
   .tech-pill-role { font-size: 11px; color: var(--muted); font-family: var(--mono); }
- 
+
   /* ── MARQUEE ── */
   .marquee-wrap {
     overflow: hidden; margin-top: 36px;
@@ -229,7 +283,7 @@ Index · HTML
     background: var(--accent); opacity: 0.5; flex-shrink: 0;
   }
   @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
- 
+
   /* ── HOW WE WORK ── */
   .process-section {
     border-top: 0.5px solid var(--border);
@@ -252,7 +306,7 @@ Index · HTML
   }
   .process-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
   .process-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
- 
+
   /* ── CONTACT / FORM ── */
   .contact-section {
     border-top: 0.5px solid var(--border);
@@ -278,7 +332,7 @@ Index · HTML
   .contact-direct-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 6px; }
   .contact-direct a { font-size: 14px; color: var(--accent2); }
   .contact-direct a:hover { text-decoration: underline; }
- 
+
   .form-card {
     background: var(--bg2); border: 0.5px solid var(--border);
     border-radius: 14px; padding: 36px;
@@ -305,7 +359,7 @@ Index · HTML
   .form-input:focus, .form-select:focus { border-color: var(--border-h); }
   .form-input:focus-visible, .form-select:focus-visible { outline: 1.5px solid var(--accent); outline-offset: 1px; }
   textarea.form-input { resize: vertical; min-height: 90px; font-family: var(--sans); line-height: 1.5; }
- 
+
   .urgency-toggle { display: flex; gap: 8px; }
   .urgency-option {
     flex: 1; text-align: center;
@@ -318,7 +372,7 @@ Index · HTML
   .urgency-option.checked {
     background: var(--accent); border-color: var(--accent); color: #fff;
   }
- 
+
   .btn-submit {
     width: 100%; font-family: var(--sans); font-size: 15px; font-weight: 500;
     background: var(--accent); color: #fff;
@@ -328,14 +382,14 @@ Index · HTML
   }
   .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
   .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
- 
+
   .form-status {
     margin-top: 14px; font-size: 13px; font-family: var(--mono);
     min-height: 18px;
   }
   .form-status.success { color: var(--accent2); }
   .form-status.error { color: var(--danger); }
- 
+
   /* ── FOOTER ── */
   footer {
     border-top: 0.5px solid var(--border);
@@ -349,7 +403,7 @@ Index · HTML
   .footer-links a { font-family: var(--mono); font-size: 12px; color: var(--muted); transition: color 0.2s; }
   .footer-links a:hover { color: var(--text); }
   .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--muted); }
- 
+
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: 0 24px; }
@@ -370,7 +424,7 @@ Index · HTML
     .footer-links { display: none; }
     .hero-stats { gap: 28px; }
   }
- 
+
   @media (max-width: 520px) {
     .process-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 30px; }
@@ -378,7 +432,10 @@ Index · HTML
 </style>
 </head>
 <body>
- 
+<div class="bg-grid"></div>
+<div class="orb2"></div>
+<div class="orb3"></div>
+
 <nav>
   <div class="logo">Aham<span>.</span></div>
   <div class="nav-links">
@@ -389,7 +446,7 @@ Index · HTML
   </div>
   <a href="#contact"><button class="btn-nav">Start a project ↗</button></a>
 </nav>
- 
+
 <!-- HERO -->
 <section class="hero">
   <div class="eyebrow">Digital Product Studio · Made on Earth by Humans </div>
@@ -411,7 +468,7 @@ Index · HTML
     <div><div class="stat-num">100%</div><div class="stat-label">custom-built</div></div>
   </div>
 </section>
- 
+
 <!-- SERVICES -->
 <section id="services" class="services">
   <div class="service-card">
@@ -433,11 +490,11 @@ Index · HTML
     <div class="service-tag">// HubSpot · Airtable · Make · Supabase</div>
   </div>
 </section>
- 
+
 <!-- STACK -->
 <section id="stack" class="stack-section">
   <div class="section-label"><span>//</span> Our Core Tech Stack</div>
- 
+
   <div class="cat-tabs" id="catTabs">
     <button class="cat-tab active" data-cat="all">All</button>
     <button class="cat-tab" data-cat="frontend">Frontend</button>
@@ -447,14 +504,14 @@ Index · HTML
     <button class="cat-tab" data-cat="database">Databases</button>
     <button class="cat-tab" data-cat="crm">CRMs</button>
   </div>
- 
+
   <div class="tech-grid" id="techGrid"></div>
- 
+
   <div class="marquee-wrap">
     <div class="marquee-track" id="marqueeTrack"></div>
   </div>
 </section>
- 
+
 <!-- PROCESS -->
 <section id="process" class="process-section">
   <div class="process-inner">
@@ -483,19 +540,16 @@ Index · HTML
     </div>
   </div>
 </section>
- 
+
 <!-- CONTACT / LEAD FORM -->
 <section id="contact" class="contact-section">
   <div class="contact-inner">
     <div>
       <div class="contact-headline">Ready to build something <span>that lasts</span>?</div>
       <p class="contact-sub">Tell us about your project. We'll review your details and get back to you with next steps.</p>
-      <div class="contact-direct">
-        <div class="contact-direct-label">// or reach us directly</div>
-        <a href="mailto:hello@ahamsolutions.com">hello@ahamsolutions.com</a>
-      </div>
+
     </div>
- 
+
     <div class="form-card">
       <form id="leadForm" novalidate>
         <div class="form-row">
@@ -505,15 +559,15 @@ Index · HTML
           </div>
           <div class="form-group">
             <label class="form-label" for="f-phone">Phone</label>
-            <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="+92 3xx xxxxxxx" required>
+            <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="+1 555 000 0000" required>
           </div>
         </div>
- 
+
         <div class="form-group">
           <label class="form-label" for="f-email">Email</label>
           <input class="form-input" type="email" id="f-email" name="email" placeholder="you@company.com" required>
         </div>
- 
+
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="f-service">Service</label>
@@ -530,7 +584,7 @@ Index · HTML
             <input class="form-input" type="text" id="f-budget" name="budget" placeholder="e.g. $800 or $2,000+" required>
           </div>
         </div>
- 
+
         <div class="form-group">
           <label class="form-label">Urgency — do you need this done quickly?</label>
           <div class="urgency-toggle" id="urgencyToggle">
@@ -542,19 +596,19 @@ Index · HTML
             </label>
           </div>
         </div>
- 
+
         <div class="form-group">
           <label class="form-label" for="f-query">Query</label>
           <textarea class="form-input" id="f-query" name="query" placeholder="Tell us briefly what you need..." required></textarea>
         </div>
- 
+
         <button type="submit" class="btn-submit" id="submitBtn">Send details</button>
         <div class="form-status" id="formStatus"></div>
       </form>
     </div>
   </div>
 </section>
- 
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Aham<span>.</span></div>
@@ -566,7 +620,7 @@ Index · HTML
   </div>
   <div class="footer-copy">© 2026 Aham Solutions. All rights reserved.</div>
 </footer>
- 
+
 <script>
 const stack = [
   { name: "React", role: "UI library", cat: "frontend", icon: "ti-layout-grid" },
@@ -591,7 +645,7 @@ const stack = [
   { name: "GoHighLevel", role: "Agency CRM", cat: "crm", icon: "ti-chart-arrows-vertical" },
   { name: "Notion", role: "Ops & docs", cat: "crm", icon: "ti-file-text" },
 ];
- 
+
 function renderGrid(cat) {
   const grid = document.getElementById('techGrid');
   const items = cat === 'all' ? stack : stack.filter(t => t.cat === cat);
@@ -603,7 +657,7 @@ function renderGrid(cat) {
     </div>
   `).join('');
 }
- 
+
 document.getElementById('catTabs').addEventListener('click', e => {
   const btn = e.target.closest('.cat-tab');
   if (!btn) return;
@@ -611,15 +665,15 @@ document.getElementById('catTabs').addEventListener('click', e => {
   btn.classList.add('active');
   renderGrid(btn.dataset.cat);
 });
- 
+
 renderGrid('all');
- 
+
 const marqueeItems = stack.map(t =>
   `<span class="marquee-item"><span class="marquee-dot"></span>${t.name}</span>`
 ).join('');
 const track = document.getElementById('marqueeTrack');
 track.innerHTML = marqueeItems + marqueeItems;
- 
+
 // Smooth scroll offset for fixed nav
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
@@ -629,7 +683,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
   });
 });
- 
+
 // ── URGENCY TOGGLE VISUAL STATE ──
 const urgencyToggle = document.getElementById('urgencyToggle');
 urgencyToggle.addEventListener('click', e => {
@@ -639,31 +693,31 @@ urgencyToggle.addEventListener('click', e => {
   opt.classList.add('checked');
   opt.querySelector('input').checked = true;
 });
- 
+
 // ── LEAD FORM SUBMISSION ──
 const WEBHOOK_URL = 'https://n8n-production-0c2e.up.railway.app/webhook-test/fa369799-b422-468e-839f-bf5cd8152c41';
- 
+
 const leadForm = document.getElementById('leadForm');
 const submitBtn = document.getElementById('submitBtn');
 const formStatus = document.getElementById('formStatus');
- 
+
 leadForm.addEventListener('submit', async (e) => {
   e.preventDefault();
- 
+
   const urgencyChecked = leadForm.querySelector('input[name="urgency"]:checked');
   if (!urgencyChecked) {
     formStatus.textContent = 'Please select an urgency option.';
     formStatus.className = 'form-status error';
     return;
   }
- 
+
   if (!leadForm.query.value.trim()) {
     formStatus.textContent = 'Please tell us a bit about your query.';
     formStatus.className = 'form-status error';
     leadForm.query.focus();
     return;
   }
- 
+
   const payload = {
     name: leadForm.name.value.trim(),
     email: leadForm.email.value.trim(),
@@ -675,22 +729,22 @@ leadForm.addEventListener('submit', async (e) => {
     submitted_at: new Date().toISOString(),
     source: 'ahamsolutions.com'
   };
- 
+
   const originalLabel = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
   formStatus.textContent = '';
   formStatus.className = 'form-status';
- 
+
   try {
     const res = await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
- 
+
     if (!res.ok) throw new Error('Webhook responded with status ' + res.status);
- 
+
     formStatus.textContent = "Thanks — we've received your details and will be in touch shortly.";
     formStatus.classList.add('success');
     leadForm.reset();
@@ -706,4 +760,3 @@ leadForm.addEventListener('submit', async (e) => {
 </script>
 </body>
 </html>
- 
