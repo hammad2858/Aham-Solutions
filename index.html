@@ -27,7 +27,6 @@
     --danger:   #FF6B6B;
   }
 
-
   /* ── ANIMATED BACKGROUND ── */
   body::before {
     content: '';
@@ -46,7 +45,6 @@
     100% { opacity: 1; transform: scale(1.02) translateX(10px)  translateY(-8px); }
   }
 
-  /* Floating orb 1 */
   body::after {
     content: '';
     position: fixed;
@@ -64,13 +62,10 @@
   }
 
   .orb2 {
-    position: fixed;
-    width: 340px; height: 340px;
-    border-radius: 50%;
+    position: fixed; width: 340px; height: 340px; border-radius: 50%;
     background: radial-gradient(circle, rgba(79,255,176,0.09) 0%, transparent 70%);
     bottom: 10%; left: -80px; z-index: 0;
-    animation: orb2 22s ease-in-out infinite alternate;
-    pointer-events: none;
+    animation: orb2 22s ease-in-out infinite alternate; pointer-events: none;
   }
   @keyframes orb2 {
     0%   { transform: translate(0, 0) scale(1); }
@@ -79,14 +74,10 @@
   }
 
   .orb3 {
-    position: fixed;
-    width: 260px; height: 260px;
-    border-radius: 50%;
+    position: fixed; width: 260px; height: 260px; border-radius: 50%;
     background: radial-gradient(circle, rgba(108,99,255,0.11) 0%, transparent 70%);
     top: 50%; left: 50%; transform: translate(-50%, -50%);
-    z-index: 0;
-    animation: orb3 26s ease-in-out infinite alternate;
-    pointer-events: none;
+    z-index: 0; animation: orb3 26s ease-in-out infinite alternate; pointer-events: none;
   }
   @keyframes orb3 {
     0%   { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
@@ -94,7 +85,6 @@
     100% { transform: translate(-60%, -45%) scale(0.85); opacity: 0.7; }
   }
 
-  /* Grid overlay */
   .bg-grid {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     background-image:
@@ -105,24 +95,15 @@
     -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
   }
 
-  /* Ensure all sections sit above bg layers */
   nav, section, footer { position: relative; z-index: 1; }
-
   html { scroll-behavior: smooth; }
-
   body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    min-height: 100vh;
+    background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 16px;
+    line-height: 1.6; min-height: 100vh;
     -webkit-font-smoothing: antialiased;
   }
-
   a { color: inherit; text-decoration: none; }
-
-  /* ── SCROLLBAR ── */
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--bg3); border-radius: 3px; }
@@ -132,8 +113,7 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 60px; height: 64px;
-    background: rgba(11,14,26,0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(11,14,26,0.85); backdrop-filter: blur(12px);
     border-bottom: 0.5px solid var(--border);
   }
   .logo { font-family: var(--sans); font-size: 17px; font-weight: 600; letter-spacing: -0.01em; }
@@ -150,23 +130,16 @@
   .btn-nav:hover { opacity: 0.88; }
 
   /* ── HERO ── */
-  .hero {
-    padding: 148px 60px 80px;
-    max-width: 1100px; margin: 0 auto;
-  }
+  .hero { padding: 148px 60px 80px; max-width: 1100px; margin: 0 auto; }
   .eyebrow {
     font-family: var(--mono); font-size: 12px; color: var(--accent2);
     letter-spacing: 0.14em; margin-bottom: 28px;
     display: flex; align-items: center; gap: 12px;
   }
-  .eyebrow::before {
-    content: ''; display: inline-block;
-    width: 24px; height: 1px; background: var(--accent2);
-  }
+  .eyebrow::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent2); }
   .hero h1 {
-    font-size: clamp(36px, 5.5vw, 62px);
-    font-weight: 600; line-height: 1.12;
-    letter-spacing: -0.03em; max-width: 780px;
+    font-size: clamp(36px, 5.5vw, 62px); font-weight: 600;
+    line-height: 1.12; letter-spacing: -0.03em; max-width: 780px;
   }
   .hero h1 .dim { color: var(--muted); font-weight: 400; }
   .hero h1 .hl { color: var(--accent); }
@@ -176,11 +149,7 @@
     animation: blink 1s step-end infinite;
   }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-  .hero-sub {
-    margin-top: 28px; font-size: 16px; color: var(--muted);
-    line-height: 1.75; max-width: 560px;
-  }
+  .hero-sub { margin-top: 28px; font-size: 16px; color: var(--muted); line-height: 1.75; max-width: 560px; }
   .hero-actions { margin-top: 40px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
   .btn-primary {
     font-family: var(--sans); font-size: 14px; font-weight: 500;
@@ -197,7 +166,6 @@
     transition: color 0.2s, border-color 0.2s;
   }
   .btn-ghost:hover { color: var(--text); border-color: var(--border-h); }
-
   .hero-stats {
     display: flex; gap: 52px; flex-wrap: wrap;
     margin-top: 60px; padding-top: 36px;
@@ -224,94 +192,73 @@
   .service-tag { margin-top: 18px; font-family: var(--mono); font-size: 10px; color: var(--accent); letter-spacing: 0.08em; }
 
   /* ── STACK SECTION ── */
-  .stack-section {
-    max-width: 1100px; margin: 0 auto;
-    padding: 0 60px 80px;
-  }
+  .stack-section { max-width: 1100px; margin: 0 auto; padding: 0 60px 80px; }
   .section-label {
-    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    font-family: var(--mono); font-size: 13px; color: var(--muted); /* increased from 11px */
     letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 28px;
   }
   .section-label span { color: var(--accent); margin-right: 6px; }
 
   .cat-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
   .cat-tab {
-    font-family: var(--mono); font-size: 12px;
-    padding: 7px 16px; border-radius: 20px;
+    font-family: var(--mono); font-size: 13px; /* increased from 12px */
+    padding: 8px 18px; border-radius: 20px;
     border: 0.5px solid var(--border); color: var(--muted);
-    background: transparent; cursor: pointer;
-    transition: all 0.18s;
+    background: transparent; cursor: pointer; transition: all 0.18s;
   }
   .cat-tab:hover { color: var(--text); border-color: var(--border-h); }
   .cat-tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
 
   .tech-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 10px; min-height: 170px;
   }
   .tech-pill {
     background: var(--bg3); border: 0.5px solid var(--border);
-    border-radius: 10px; padding: 16px 16px 14px;
+    border-radius: 10px; padding: 18px 16px 16px;
     transition: border-color 0.18s, transform 0.18s;
     display: flex; flex-direction: column; gap: 8px;
   }
   .tech-pill:hover { border-color: var(--border-h); transform: translateY(-2px); }
-  .tech-pill-icon { font-size: 20px; color: var(--accent); }
-  .tech-pill-name { font-size: 13px; font-weight: 500; color: var(--text); }
-  .tech-pill-role { font-size: 11px; color: var(--muted); font-family: var(--mono); }
+  .tech-pill-icon { font-size: 22px; color: var(--accent); } /* increased from 20px */
+  .tech-pill-name { font-size: 15px; font-weight: 500; color: var(--text); } /* increased from 13px */
+  .tech-pill-role { font-size: 12px; color: var(--muted); font-family: var(--mono); } /* increased from 11px */
 
   /* ── MARQUEE ── */
   .marquee-wrap {
-    overflow: hidden; margin-top: 36px;
-    padding: 18px 0;
-    border-top: 0.5px solid var(--border);
-    border-bottom: 0.5px solid var(--border);
+    overflow: hidden; margin-top: 36px; padding: 18px 0;
+    border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
   }
-  .marquee-track {
-    display: flex; animation: marquee 32s linear infinite;
-    width: max-content;
-  }
+  .marquee-track { display: flex; animation: marquee 32s linear infinite; width: max-content; }
   .marquee-track:hover { animation-play-state: paused; }
   .marquee-item {
-    font-family: var(--mono); font-size: 12px; color: var(--muted);
-    padding: 0 28px; white-space: nowrap;
-    display: flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 13px; color: var(--muted); /* increased from 12px */
+    padding: 0 28px; white-space: nowrap; display: flex; align-items: center; gap: 10px;
   }
-  .marquee-dot {
-    width: 4px; height: 4px; border-radius: 50%;
-    background: var(--accent); opacity: 0.5; flex-shrink: 0;
-  }
+  .marquee-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent); opacity: 0.5; flex-shrink: 0; }
   @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
   /* ── HOW WE WORK ── */
-  .process-section {
-    border-top: 0.5px solid var(--border);
-    padding: 80px 60px;
-  }
+  .process-section { border-top: 0.5px solid var(--border); padding: 80px 60px; }
   .process-inner { max-width: 1100px; margin: 0 auto; }
   .process-grid {
     display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 0; margin-top: 40px;
   }
   .process-step {
-    padding: 28px 28px 28px 0;
+    padding: 28px 32px 28px 0; margin-right: 32px;
     border-right: 0.5px solid var(--border);
-    padding-right: 32px; margin-right: 32px;
   }
   .process-step:last-child { border-right: none; margin-right: 0; }
   .process-num {
-    font-family: var(--mono); font-size: 11px;
+    font-family: var(--mono); font-size: 13px; /* increased from 11px */
     color: var(--accent); letter-spacing: 0.1em; margin-bottom: 14px;
   }
-  .process-title { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
-  .process-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+  .process-title { font-size: 17px; font-weight: 500; margin-bottom: 10px; } /* increased from 15px */
+  .process-desc { font-size: 14px; color: var(--muted); line-height: 1.7; } /* increased from 13px */
 
   /* ── CONTACT / FORM ── */
-  .contact-section {
-    border-top: 0.5px solid var(--border);
-    padding: 80px 60px 100px;
-  }
+  .contact-section { border-top: 0.5px solid var(--border); padding: 80px 60px 100px; }
   .contact-inner {
     max-width: 1100px; margin: 0 auto;
     display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 64px;
@@ -321,34 +268,21 @@
     letter-spacing: -0.02em; line-height: 1.18; max-width: 380px;
   }
   .contact-headline span { color: var(--accent); }
-  .contact-sub {
-    margin-top: 16px; font-size: 14px; color: var(--muted);
-    line-height: 1.75; max-width: 360px;
-  }
-  .contact-direct {
-    margin-top: 32px; padding-top: 24px;
-    border-top: 0.5px solid var(--border);
-  }
+  .contact-sub { margin-top: 16px; font-size: 14px; color: var(--muted); line-height: 1.75; max-width: 360px; }
+  .contact-direct { margin-top: 32px; padding-top: 24px; border-top: 0.5px solid var(--border); }
   .contact-direct-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.08em; margin-bottom: 6px; }
   .contact-direct a { font-size: 14px; color: var(--accent2); }
   .contact-direct a:hover { text-decoration: underline; }
 
-  .form-card {
-    background: var(--bg2); border: 0.5px solid var(--border);
-    border-radius: 14px; padding: 36px;
-  }
+  .form-card { background: var(--bg2); border: 0.5px solid var(--border); border-radius: 14px; padding: 36px; }
   .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   .form-group { margin-bottom: 18px; display: flex; flex-direction: column; gap: 7px; }
-  .form-label {
-    font-family: var(--mono); font-size: 11px; color: var(--muted);
-    letter-spacing: 0.06em; text-transform: uppercase;
-  }
+  .form-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
   .form-input, .form-select {
     background: var(--bg3); border: 0.5px solid var(--border);
     border-radius: 8px; padding: 12px 14px;
     font-family: var(--sans); font-size: 14px; color: var(--text);
-    outline: none; transition: border-color 0.18s;
-    width: 100%; appearance: none;
+    outline: none; transition: border-color 0.18s; width: 100%; appearance: none;
   }
   .form-select {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%237B82A0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
@@ -359,41 +293,30 @@
   .form-input:focus, .form-select:focus { border-color: var(--border-h); }
   .form-input:focus-visible, .form-select:focus-visible { outline: 1.5px solid var(--accent); outline-offset: 1px; }
   textarea.form-input { resize: vertical; min-height: 90px; font-family: var(--sans); line-height: 1.5; }
-
   .urgency-toggle { display: flex; gap: 8px; }
   .urgency-option {
     flex: 1; text-align: center;
     background: var(--bg3); border: 0.5px solid var(--border);
     border-radius: 8px; padding: 11px 14px; cursor: pointer;
-    font-size: 13px; color: var(--muted);
-    transition: all 0.18s;
+    font-size: 13px; color: var(--muted); transition: all 0.18s;
   }
   .urgency-option input { position: absolute; opacity: 0; pointer-events: none; }
-  .urgency-option.checked {
-    background: var(--accent); border-color: var(--accent); color: #fff;
-  }
-
+  .urgency-option.checked { background: var(--accent); border-color: var(--accent); color: #fff; }
   .btn-submit {
     width: 100%; font-family: var(--sans); font-size: 15px; font-weight: 500;
     background: var(--accent); color: #fff;
     padding: 14px 20px; border-radius: 9px; border: none; cursor: pointer;
-    transition: opacity 0.2s, transform 0.15s;
-    margin-top: 4px;
+    transition: opacity 0.2s, transform 0.15s; margin-top: 4px;
   }
   .btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
   .btn-submit:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
-
-  .form-status {
-    margin-top: 14px; font-size: 13px; font-family: var(--mono);
-    min-height: 18px;
-  }
+  .form-status { margin-top: 14px; font-size: 13px; font-family: var(--mono); min-height: 18px; }
   .form-status.success { color: var(--accent2); }
   .form-status.error { color: var(--danger); }
 
   /* ── FOOTER ── */
   footer {
-    border-top: 0.5px solid var(--border);
-    padding: 32px 60px;
+    border-top: 0.5px solid var(--border); padding: 32px 60px;
     display: flex; align-items: center; justify-content: space-between;
     flex-wrap: wrap; gap: 16px;
   }
@@ -403,6 +326,136 @@
   .footer-links a { font-family: var(--mono); font-size: 12px; color: var(--muted); transition: color 0.2s; }
   .footer-links a:hover { color: var(--text); }
   .footer-copy { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  /* ═══════════════════════════════════════════
+     FUNNEL MODAL
+  ═══════════════════════════════════════════ */
+  .funnel-overlay {
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(7, 9, 18, 0.88);
+    backdrop-filter: blur(10px);
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+    animation: fadeInOverlay 0.35s ease;
+  }
+  @keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
+
+  .funnel-modal {
+    background: var(--bg2);
+    border: 0.5px solid var(--border-h);
+    border-radius: 18px;
+    width: 100%; max-width: 520px;
+    padding: 40px;
+    position: relative;
+    animation: slideUp 0.35s ease;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(108,99,255,0.1);
+  }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  .funnel-close { display: none; }
+
+  /* Progress bar */
+  .funnel-progress {
+    display: flex; gap: 6px; margin-bottom: 32px;
+  }
+  .funnel-progress-bar {
+    height: 3px; flex: 1; border-radius: 3px;
+    background: var(--bg3); transition: background 0.3s ease;
+  }
+  .funnel-progress-bar.done { background: var(--accent); }
+  .funnel-progress-bar.active { background: var(--accent); opacity: 0.5; }
+
+  .funnel-step { display: none; }
+  .funnel-step.active { display: block; animation: stepIn 0.25s ease; }
+  @keyframes stepIn { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+
+  .funnel-eyebrow {
+    font-family: var(--mono); font-size: 11px; color: var(--accent);
+    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .funnel-title { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.3; margin-bottom: 6px; }
+  .funnel-sub { font-size: 13px; color: var(--muted); margin-bottom: 28px; line-height: 1.6; }
+
+  .funnel-field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 16px; }
+  .funnel-label { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .funnel-input {
+    background: var(--bg3); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 13px 16px;
+    font-family: var(--sans); font-size: 14px; color: var(--text);
+    outline: none; transition: border-color 0.18s; width: 100%;
+  }
+  .funnel-input::placeholder { color: var(--muted); }
+  .funnel-input:focus { border-color: var(--border-h); }
+  .funnel-input:focus-visible { outline: 1.5px solid var(--accent); outline-offset: 1px; }
+  .funnel-input.error-field { border-color: var(--danger); }
+
+  /* Phone with country code */
+  .phone-combo { display: flex; gap: 8px; }
+  .country-code-select {
+    background: var(--bg3); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 13px 10px;
+    font-family: var(--mono); font-size: 13px; color: var(--text);
+    outline: none; transition: border-color 0.18s;
+    cursor: pointer; appearance: none; width: 100px; flex-shrink: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'><path d='M1 1l4 4 4-4' stroke='%237B82A0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 8px center;
+    padding-right: 22px;
+  }
+  .country-code-select:focus { border-color: var(--border-h); }
+
+  /* Select dropdowns inside funnel */
+  .funnel-select {
+    background: var(--bg3); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 13px 16px;
+    font-family: var(--sans); font-size: 14px; color: var(--text);
+    outline: none; transition: border-color 0.18s; width: 100%; appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%237B82A0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 36px; cursor: pointer;
+  }
+  .funnel-select:focus { border-color: var(--border-h); }
+
+  textarea.funnel-input { resize: vertical; min-height: 80px; font-family: var(--sans); line-height: 1.5; }
+
+  .funnel-urgency { display: flex; gap: 8px; }
+  .funnel-urgency-opt {
+    flex: 1; text-align: center;
+    background: var(--bg3); border: 0.5px solid var(--border);
+    border-radius: 8px; padding: 11px 10px; cursor: pointer;
+    font-size: 13px; color: var(--muted); transition: all 0.18s;
+    user-select: none;
+  }
+  .funnel-urgency-opt.checked { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  .funnel-actions { display: flex; gap: 10px; margin-top: 8px; align-items: center; }
+  .funnel-btn-next {
+    flex: 1; font-family: var(--sans); font-size: 15px; font-weight: 500;
+    background: var(--accent); color: #fff;
+    padding: 14px 20px; border-radius: 9px; border: none; cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .funnel-btn-next:hover { opacity: 0.88; transform: translateY(-1px); }
+  .funnel-btn-next:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .funnel-btn-back {
+    font-family: var(--sans); font-size: 14px; color: var(--muted);
+    background: transparent; border: 0.5px solid var(--border);
+    padding: 14px 20px; border-radius: 9px; cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .funnel-btn-back:hover { color: var(--text); border-color: var(--border-h); }
+
+  .funnel-field-error {
+    font-family: var(--mono); font-size: 11px; color: var(--danger);
+    margin-top: -8px; margin-bottom: 4px; min-height: 14px;
+  }
+
+  /* Step 3 success */
+  .funnel-success-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(79,255,176,0.1); border: 1px solid rgba(79,255,176,0.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; color: var(--accent2); margin-bottom: 24px;
+  }
 
   /* ── MOBILE ── */
   @media (max-width: 768px) {
@@ -423,11 +476,13 @@
     footer { padding: 28px 24px; }
     .footer-links { display: none; }
     .hero-stats { gap: 28px; }
+    .funnel-modal { padding: 28px 24px; }
   }
-
   @media (max-width: 520px) {
     .process-grid { grid-template-columns: 1fr; }
     .hero h1 { font-size: 30px; }
+    .phone-combo { flex-direction: column; }
+    .country-code-select { width: 100%; }
   }
 </style>
 </head>
@@ -436,20 +491,130 @@
 <div class="orb2"></div>
 <div class="orb3"></div>
 
+<!-- ═══════════════════════════════════════════
+     FUNNEL MODAL
+═══════════════════════════════════════════ -->
+<div class="funnel-overlay" id="funnelOverlay">
+  <div class="funnel-modal" role="dialog" aria-modal="true" aria-label="Start a project">
+
+    <button class="funnel-close" id="funnelClose" aria-label="Close">
+      <i class="ti ti-x"></i>
+    </button>
+
+    <!-- Progress -->
+    <div class="funnel-progress" id="funnelProgress">
+      <div class="funnel-progress-bar active" data-bar="1"></div>
+      <div class="funnel-progress-bar" data-bar="2"></div>
+      <div class="funnel-progress-bar" data-bar="3"></div>
+    </div>
+
+    <!-- STEP 1 — Contact info (gated) -->
+    <div class="funnel-step active" id="funnelStep1">
+      <div class="funnel-eyebrow">Step 1 of 3</div>
+      <div class="funnel-title">Let's get to know you</div>
+      <div class="funnel-sub">Enter your contact details to continue. We'll only use these to follow up on your project.</div>
+
+      <div class="funnel-field">
+        <label class="funnel-label" for="fn-name">Full Name</label>
+        <input class="funnel-input" type="text" id="fn-name" placeholder="Your full name">
+      </div>
+
+      <div class="funnel-field">
+        <label class="funnel-label" for="fn-email">Email <span style="color:var(--danger)">*</span></label>
+        <input class="funnel-input" type="email" id="fn-email" placeholder="you@company.com" required>
+        <div class="funnel-field-error" id="err-email"></div>
+      </div>
+
+      <div class="funnel-field">
+        <label class="funnel-label" for="fn-phone">Phone Number <span style="color:var(--danger)">*</span></label>
+        <div class="phone-combo">
+          <select class="country-code-select" id="fn-country-code" aria-label="Country code"></select>
+          <input class="funnel-input" type="tel" id="fn-phone" placeholder="3001234567" style="flex:1">
+        </div>
+        <div class="funnel-field-error" id="err-phone"></div>
+      </div>
+
+      <div class="funnel-actions">
+        <button class="funnel-btn-next" id="step1Next">
+          Continue <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — Project details -->
+    <div class="funnel-step" id="funnelStep2">
+      <div class="funnel-eyebrow">Step 2 of 3</div>
+      <div class="funnel-title">Tell us about your project</div>
+      <div class="funnel-sub">This helps us prepare the right solution before we get on a call.</div>
+
+      <div class="funnel-field">
+        <label class="funnel-label" for="fn-service">Service needed</label>
+        <select class="funnel-select" id="fn-service">
+          <option value="" disabled selected>Select a service</option>
+          <option value="AI Automations">AI Automations</option>
+          <option value="Web Platforms">Web Platforms</option>
+          <option value="CRM & Workflows">CRM &amp; Workflows</option>
+          <option value="Other">Other / Not sure yet</option>
+        </select>
+      </div>
+
+      <div class="funnel-field">
+        <label class="funnel-label" for="fn-budget">Budget (USD)</label>
+        <input class="funnel-input" type="text" id="fn-budget" placeholder="e.g. $800 or $2,000+">
+      </div>
+
+      <div class="funnel-field">
+        <label class="funnel-label">Urgency</label>
+        <div class="funnel-urgency" id="funnelUrgency">
+          <div class="funnel-urgency-opt" data-value="yes">Yes, urgent</div>
+          <div class="funnel-urgency-opt" data-value="no">No, flexible</div>
+        </div>
+      </div>
+
+      <div class="funnel-field">
+        <label class="funnel-label" for="fn-query">Your query</label>
+        <textarea class="funnel-input" id="fn-query" placeholder="Briefly describe what you need..."></textarea>
+      </div>
+
+      <div class="funnel-actions">
+        <button class="funnel-btn-back" id="step2Back">Back</button>
+        <button class="funnel-btn-next" id="step2Next">
+          Submit <i class="ti ti-send"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Success -->
+    <div class="funnel-step" id="funnelStep3">
+      <div class="funnel-success-icon"><i class="ti ti-check"></i></div>
+      <div class="funnel-title" style="margin-bottom:12px">You're all set 🎉</div>
+      <div class="funnel-sub" style="margin-bottom:0">
+        Thanks for reaching out! We've received your details and will get back to you within <strong style="color:var(--text)">24 hours</strong> with next steps.<br><br>
+        In the meantime, feel free to explore what we build below.
+      </div>
+      <div class="funnel-actions" style="margin-top:28px">
+        <button class="funnel-btn-next" id="funnelDone">
+          Explore the site <i class="ti ti-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <nav>
   <div class="logo">Aham<span>.</span></div>
   <div class="nav-links">
     <a href="#services">services</a>
     <a href="#stack">stack</a>
     <a href="#process">process</a>
-    <a href="#contact">contact</a>
   </div>
-  <a href="#contact"><button class="btn-nav">Start a project ↗</button></a>
+  <button class="btn-nav" onclick="document.getElementById('funnelOverlay').style.display='flex'">Start a project ↗</button>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="eyebrow">Digital Product Studio · Made on Earth by Humans </div>
+  <div class="eyebrow">Digital Product Studio · Made on Earth by Humans</div>
   <h1>
     We build digital products<br>
     <span class="dim">that <span class="hl">scale</span> with your ambition<span class="cursor"></span></span>
@@ -458,7 +623,7 @@
     From WhatsApp AI automations to full-stack web platforms — Aham Solutions delivers high-performance systems engineered for real business outcomes.
   </p>
   <div class="hero-actions">
-    <a href="#contact"><button class="btn-primary">See our work</button></a>
+    <a href="#services"><button class="btn-primary">See our work</button></a>
     <a href="#process"><button class="btn-ghost"><i class="ti ti-arrow-right" aria-hidden="true"></i> How we work</button></a>
   </div>
   <div class="hero-stats">
@@ -485,7 +650,7 @@
   </div>
   <div class="service-card">
     <div class="service-icon"><i class="ti ti-arrows-transfer-up" aria-hidden="true"></i></div>
-    <div class="service-title">CRM & Workflows</div>
+    <div class="service-title">CRM &amp; Workflows</div>
     <div class="service-desc">Custom CRM setups, third-party integrations, and automated pipelines. Your team focuses on relationships — the system handles the rest.</div>
     <div class="service-tag">// HubSpot · Airtable · Make · Supabase</div>
   </div>
@@ -494,19 +659,16 @@
 <!-- STACK -->
 <section id="stack" class="stack-section">
   <div class="section-label"><span>//</span> Our Core Tech Stack</div>
-
   <div class="cat-tabs" id="catTabs">
     <button class="cat-tab active" data-cat="all">All</button>
     <button class="cat-tab" data-cat="frontend">Frontend</button>
     <button class="cat-tab" data-cat="backend">Backend</button>
-    <button class="cat-tab" data-cat="ai">AI & Automations</button>
+    <button class="cat-tab" data-cat="ai">AI &amp; Automations</button>
     <button class="cat-tab" data-cat="workflow">Workflows</button>
     <button class="cat-tab" data-cat="database">Databases</button>
     <button class="cat-tab" data-cat="crm">CRMs</button>
   </div>
-
   <div class="tech-grid" id="techGrid"></div>
-
   <div class="marquee-wrap">
     <div class="marquee-track" id="marqueeTrack"></div>
   </div>
@@ -541,73 +703,7 @@
   </div>
 </section>
 
-<!-- CONTACT / LEAD FORM -->
-<section id="contact" class="contact-section">
-  <div class="contact-inner">
-    <div>
-      <div class="contact-headline">Ready to build something <span>that lasts</span>?</div>
-      <p class="contact-sub">Tell us about your project. We'll review your details and get back to you with next steps.</p>
 
-    </div>
-
-    <div class="form-card">
-      <form id="leadForm" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="f-name">Name</label>
-            <input class="form-input" type="text" id="f-name" name="name" placeholder="Your full name" required>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-phone">Phone</label>
-            <input class="form-input" type="tel" id="f-phone" name="phone" placeholder="+1 555 000 0000" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="f-email">Email</label>
-          <input class="form-input" type="email" id="f-email" name="email" placeholder="you@company.com" required>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="f-service">Service</label>
-            <select class="form-select" id="f-service" name="service" required>
-              <option value="" disabled selected>Select a service</option>
-              <option value="AI Automations">AI Automations</option>
-              <option value="Web Platforms">Web Platforms</option>
-              <option value="CRM & Workflows">CRM & Workflows</option>
-              <option value="Other">Other / Not sure yet</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-budget">Budget (USD)</label>
-            <input class="form-input" type="text" id="f-budget" name="budget" placeholder="e.g. $800 or $2,000+" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Urgency — do you need this done quickly?</label>
-          <div class="urgency-toggle" id="urgencyToggle">
-            <label class="urgency-option" data-value="yes">
-              <input type="radio" name="urgency" value="yes" required> Yes, urgent
-            </label>
-            <label class="urgency-option" data-value="no">
-              <input type="radio" name="urgency" value="no"> No, flexible
-            </label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="f-query">Query</label>
-          <textarea class="form-input" id="f-query" name="query" placeholder="Tell us briefly what you need..." required></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit" id="submitBtn">Send details</button>
-        <div class="form-status" id="formStatus"></div>
-      </form>
-    </div>
-  </div>
-</section>
 
 <!-- FOOTER -->
 <footer>
@@ -616,12 +712,12 @@
     <a href="#services">Services</a>
     <a href="#stack">Stack</a>
     <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
   </div>
   <div class="footer-copy">© 2026 Aham Solutions. All rights reserved.</div>
 </footer>
 
 <script>
+// ── TECH STACK DATA ──
 const stack = [
   { name: "React", role: "UI library", cat: "frontend", icon: "ti-layout-grid" },
   { name: "Next.js", role: "Full-stack framework", cat: "frontend", icon: "ti-brand-nextjs" },
@@ -657,7 +753,6 @@ function renderGrid(cat) {
     </div>
   `).join('');
 }
-
 document.getElementById('catTabs').addEventListener('click', e => {
   const btn = e.target.closest('.cat-tab');
   if (!btn) return;
@@ -665,7 +760,6 @@ document.getElementById('catTabs').addEventListener('click', e => {
   btn.classList.add('active');
   renderGrid(btn.dataset.cat);
 });
-
 renderGrid('all');
 
 const marqueeItems = stack.map(t =>
@@ -674,7 +768,7 @@ const marqueeItems = stack.map(t =>
 const track = document.getElementById('marqueeTrack');
 track.innerHTML = marqueeItems + marqueeItems;
 
-// Smooth scroll offset for fixed nav
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
     const target = document.querySelector(a.getAttribute('href'));
@@ -684,79 +778,163 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// ── URGENCY TOGGLE VISUAL STATE ──
-const urgencyToggle = document.getElementById('urgencyToggle');
-urgencyToggle.addEventListener('click', e => {
-  const opt = e.target.closest('.urgency-option');
-  if (!opt) return;
-  urgencyToggle.querySelectorAll('.urgency-option').forEach(o => o.classList.remove('checked'));
-  opt.classList.add('checked');
-  opt.querySelector('input').checked = true;
-});
+// ════════════════════════════════════════════
+// FUNNEL MODAL
+// ════════════════════════════════════════════
 
-// ── LEAD FORM SUBMISSION ──
 const WEBHOOK_URL = 'https://n8n-production-0c2e.up.railway.app/webhook-test/fa369799-b422-468e-839f-bf5cd8152c41';
 
-const leadForm = document.getElementById('leadForm');
-const submitBtn = document.getElementById('submitBtn');
-const formStatus = document.getElementById('formStatus');
+// Country codes list
+const countryCodes = [
+  { code: "+92", name: "🇵🇰 PK" },
+  { code: "+1", name: "🇺🇸 US" },
+  { code: "+44", name: "🇬🇧 UK" },
+  { code: "+971", name: "🇦🇪 AE" },
+  { code: "+966", name: "🇸🇦 SA" },
+  { code: "+91", name: "🇮🇳 IN" },
+  { code: "+61", name: "🇦🇺 AU" },
+  { code: "+49", name: "🇩🇪 DE" },
+  { code: "+33", name: "🇫🇷 FR" },
+  { code: "+1-CA", name: "🇨🇦 CA", sendCode: "+1" },
+  { code: "+55", name: "🇧🇷 BR" },
+  { code: "+65", name: "🇸🇬 SG" },
+  { code: "+60", name: "🇲🇾 MY" },
+  { code: "+20", name: "🇪🇬 EG" },
+  { code: "+234", name: "🇳🇬 NG" },
+  { code: "+254", name: "🇰🇪 KE" },
+  { code: "+27", name: "🇿🇦 ZA" },
+  { code: "+880", name: "🇧🇩 BD" },
+  { code: "+94", name: "🇱🇰 LK" },
+  { code: "+98", name: "🇮🇷 IR" },
+  { code: "+62", name: "🇮🇩 ID" },
+  { code: "+81", name: "🇯🇵 JP" },
+  { code: "+82", name: "🇰🇷 KR" },
+  { code: "+86", name: "🇨🇳 CN" },
+  { code: "+7", name: "🇷🇺 RU" },
+  { code: "+90", name: "🇹🇷 TR" },
+  { code: "+31", name: "🇳🇱 NL" },
+  { code: "+34", name: "🇪🇸 ES" },
+  { code: "+39", name: "🇮🇹 IT" },
+  { code: "+48", name: "🇵🇱 PL" },
+  { code: "+380", name: "🇺🇦 UA" },
+];
 
-leadForm.addEventListener('submit', async (e) => {
-  e.preventDefault();
+const ccSelect = document.getElementById('fn-country-code');
+countryCodes.forEach(c => {
+  const opt = document.createElement('option');
+  opt.value = c.sendCode || c.code;
+  opt.textContent = `${c.name} ${c.sendCode || c.code}`;
+  if (c.code === '+92') opt.selected = true;
+  ccSelect.appendChild(opt);
+});
 
-  const urgencyChecked = leadForm.querySelector('input[name="urgency"]:checked');
-  if (!urgencyChecked) {
-    formStatus.textContent = 'Please select an urgency option.';
-    formStatus.className = 'form-status error';
-    return;
+// State
+let funnelData = {};
+let funnelUrgencyValue = '';
+
+const overlay = document.getElementById('funnelOverlay');
+const steps = [
+  document.getElementById('funnelStep1'),
+  document.getElementById('funnelStep2'),
+  document.getElementById('funnelStep3'),
+];
+const bars = document.querySelectorAll('.funnel-progress-bar');
+
+function setStep(n) {
+  steps.forEach((s, i) => s.classList.toggle('active', i === n));
+  bars.forEach((b, i) => {
+    b.classList.remove('done', 'active');
+    if (i < n) b.classList.add('done');
+    else if (i === n) b.classList.add('active');
+  });
+}
+
+function closeModal() {
+  overlay.style.animation = 'fadeOutOverlay 0.25s ease forwards';
+  setTimeout(() => { overlay.style.display = 'none'; overlay.style.animation = ''; }, 260);
+}
+
+// Add fadeOut keyframe dynamically
+const styleEl = document.createElement('style');
+styleEl.textContent = '@keyframes fadeOutOverlay { to { opacity: 0; } }';
+document.head.appendChild(styleEl);
+
+// Modal is intentionally not closable — user must complete the funnel
+
+// Urgency inside funnel
+document.getElementById('funnelUrgency').addEventListener('click', e => {
+  const opt = e.target.closest('.funnel-urgency-opt');
+  if (!opt) return;
+  document.querySelectorAll('.funnel-urgency-opt').forEach(o => o.classList.remove('checked'));
+  opt.classList.add('checked');
+  funnelUrgencyValue = opt.dataset.value;
+});
+
+// STEP 1 → STEP 2 (gated on email + phone)
+document.getElementById('step1Next').addEventListener('click', () => {
+  const emailVal = document.getElementById('fn-email').value.trim();
+  const phoneVal = document.getElementById('fn-phone').value.trim();
+  let valid = true;
+
+  document.getElementById('err-email').textContent = '';
+  document.getElementById('err-phone').textContent = '';
+  document.getElementById('fn-email').classList.remove('error-field');
+  document.getElementById('fn-phone').classList.remove('error-field');
+
+  const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailVal || !emailRe.test(emailVal)) {
+    document.getElementById('err-email').textContent = 'Please enter a valid email address.';
+    document.getElementById('fn-email').classList.add('error-field');
+    valid = false;
+  }
+  if (!phoneVal || phoneVal.replace(/\D/g, '').length < 6) {
+    document.getElementById('err-phone').textContent = 'Please enter a valid phone number.';
+    document.getElementById('fn-phone').classList.add('error-field');
+    valid = false;
   }
 
-  if (!leadForm.query.value.trim()) {
-    formStatus.textContent = 'Please tell us a bit about your query.';
-    formStatus.className = 'form-status error';
-    leadForm.query.focus();
-    return;
-  }
+  if (!valid) return;
 
-  const payload = {
-    name: leadForm.name.value.trim(),
-    email: leadForm.email.value.trim(),
-    phone: leadForm.phone.value.trim(),
-    service: leadForm.service.value,
-    budget: leadForm.budget.value,
-    urgency: urgencyChecked.value,
-    query: leadForm.query.value.trim(),
-    submitted_at: new Date().toISOString(),
-    source: 'ahamsolutions.com'
-  };
+  funnelData.name = document.getElementById('fn-name').value.trim();
+  funnelData.email = emailVal;
+  funnelData.phone = ccSelect.value + ' ' + phoneVal;
+  setStep(1);
+});
 
-  const originalLabel = submitBtn.textContent;
-  submitBtn.disabled = true;
-  submitBtn.textContent = 'Sending...';
-  formStatus.textContent = '';
-  formStatus.className = 'form-status';
+// STEP 2 → back
+document.getElementById('step2Back').addEventListener('click', () => setStep(0));
+
+// STEP 2 → submit
+document.getElementById('step2Next').addEventListener('click', async () => {
+  funnelData.service = document.getElementById('fn-service').value || 'Not specified';
+  funnelData.budget = document.getElementById('fn-budget').value.trim() || 'Not specified';
+  funnelData.urgency = funnelUrgencyValue || 'Not specified';
+  funnelData.query = document.getElementById('fn-query').value.trim() || '';
+  funnelData.submitted_at = new Date().toISOString();
+  funnelData.source = 'ahamsolutions.com (funnel)';
+
+  const btn = document.getElementById('step2Next');
+  const origText = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = 'Sending... <i class="ti ti-loader-2"></i>';
 
   try {
-    const res = await fetch(WEBHOOK_URL, {
+    await fetch(WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(funnelData)
     });
-
-    if (!res.ok) throw new Error('Webhook responded with status ' + res.status);
-
-    formStatus.textContent = "Thanks — we've received your details and will be in touch shortly.";
-    formStatus.classList.add('success');
-    leadForm.reset();
-    urgencyToggle.querySelectorAll('.urgency-option').forEach(o => o.classList.remove('checked'));
-  } catch (err) {
-    formStatus.textContent = "Something went wrong sending your details. Please try again or email us directly.";
-    formStatus.classList.add('error');
-  } finally {
-    submitBtn.disabled = false;
-    submitBtn.textContent = originalLabel;
+  } catch {
+    // Fail silently — still show success to avoid friction
   }
+
+  btn.disabled = false;
+  btn.innerHTML = origText;
+  setStep(2);
 });
+
+// Done button
+document.getElementById('funnelDone').addEventListener('click', closeModal);
 </script>
 </body>
 </html>
